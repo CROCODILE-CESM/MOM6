@@ -892,7 +892,6 @@ subroutine register_MARBL_tracer_segments(CS,GV, tr_Reg, param_file, OBC)
       ! we can do ,length of fields - number of marbl tracers  + m to get to the right field
       index = num_fields - CS%ntr + m
       call parse_segment_data_str(trim(segstr), index, trim(fields(index)), value, filename, fieldname)
-      print*, 'MRV: filename = ', trim(filename)
       if (trim(filename) /= 'none') then
         does_tracer_file_exist = .True.
       endif
@@ -1220,13 +1219,10 @@ subroutine initialize_MARBL_tracers(restart, day, G, GV, US, h, param_file, diag
     end select
   endif
 
-  print*, 'MRV: we are in initialization'
   do m=1,CS%ntr
-
-      print*, 'MRV: we got into here = ', CS%tracer_data(m)%var_name
       call fill_obgc_segments(G, GV, OBC, CS%tracer_data(m)%tr, CS%tracer_data(m)%var_name)
-
   enddo
+
 end subroutine initialize_MARBL_tracers
 
 !> This subroutine is used to register tracer fields and subroutines

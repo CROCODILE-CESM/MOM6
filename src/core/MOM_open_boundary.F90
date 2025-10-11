@@ -1978,7 +1978,6 @@ subroutine parse_for_tracer_reservoirs(OBC, PF, use_temperature)
                  trim(ADJUSTL(fields(m))) == 'SSH' .or. &
                  trim(ADJUSTL(fields(m))) == 'TEMP' .or. &
                  trim(ADJUSTL(fields(m))) == 'SALT')) then
-        print*, 'MRV: parse_for_tracer_Reservoirs: Tracer ', trim(fields(m)), ' at index ', 2+m-salt_ind
         ! Fix this code, but we need a way to properly account for the number of tracers we are on
         if (segment%is_E_or_W_2) then
           OBC%tracer_x_reservoirs_used(2 + m - salt_ind) = .true.
